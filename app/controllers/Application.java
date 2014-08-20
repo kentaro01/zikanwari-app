@@ -9,9 +9,10 @@ public class Application extends Controller {
 	
 	
 	public static Result index() {
-		return ok(index.render("時間割"));
+		
+		return ok(index.render("時間割", 5600));
     }
 	
-		  
+	
 
 }
