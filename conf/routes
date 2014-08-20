@@ -5,9 +5,6 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-# Map static resources from the /public folder to the /assets URL path
-# Tasks          
-GET     /tasks                  controllers.Application.tasks()
-POST    /tasks                  controllers.Application.newTask()
-POST    /tasks/:id/delete       controllers.Application.deleteTask(id: Long)
+
+
 
