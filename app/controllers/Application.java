@@ -12,10 +12,7 @@ public class Application extends Controller {
 		
 		return ok(index.render("時間割", 5600));
     }
-	public static Result create() {
-		Form<Computer> computerForm = form(Computer.class);
-		return ok(createForm.render(computerForm));
-	}
+	
 	
 
 }
