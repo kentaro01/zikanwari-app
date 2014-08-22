@@ -5,5 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index()
 # add 
+GET     /add/                       controllers.Application.create()
+POST    /                           controllers.Application.save()
 
 
