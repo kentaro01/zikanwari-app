@@ -17,18 +17,19 @@ public class Application extends Controller {
 
 	public static Result index() {
 		List<SampleData> data = SampleData.find.all();
+		
 		return ok(index.render("時間割", 5600, data));
 	}
 
-	public static Result create() {
+	public static Result create (Long week,Long time) {
 		Form<SampleData> dataform = form(SampleData.class);
-		return ok(createForm.render("時間割", dataform));
+		return ok(createForm.render("時間割", dataform, week ,time));
 	}
 
-	public static Result save() {
+	public static Result save(Long week,Long time) {
 		Form<SampleData> dataform = form(SampleData.class).bindFromRequest();
 		if (dataform.hasErrors()) {
-			return badRequest(createForm.render("時間割", dataform));
+			return badRequest(createForm.render("時間割", dataform, week, time));
 		}
 		Map<String, String> map = dataform.data();
 		SampleData data = dataform.get();

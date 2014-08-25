@@ -13,24 +13,28 @@
  <th  width="800">金</th>
  <th  width="800">土</th>
 </tr>
+
 <tr>
 <th  width="800">1時間目</th>
-<td  width="800">
-  <a href="@routes.Application.create()">
+<td  width="800"><a href="@routes.Application.create(1,1)">
           授業   先生
   </a><br>
   @for(data <- list){
+  @if(data.week == 1 && data.time == 1) {
       <a href="@routes.Application.edit(data.id)">@data.lesson</a>
       @data.teacher
     }
+  }
 </td>
-<td  width="800"><a href="@routes.Application.create()">
+<td  width="800"><a href="@routes.Application.create(2,1)">
           授業   先生
   </a><br>
   @for(data <- list){
+  @if(data.week == 2 && data.time == 1) {
       <a href="@routes.Application.edit(data.id)">@data.lesson</a>
       @data.teacher
     }
+  }
  </td>
 <td  width="800"></td>
 <td  width="800"></td>
@@ -71,7 +75,7 @@
 <td  width="800"></td>
 <td  width="800"></td>
 <td  width="800"></td>
-<td  width="400"></td>
+<td  width="800"></td>
 </tr>
 </tbody>
 </table>
