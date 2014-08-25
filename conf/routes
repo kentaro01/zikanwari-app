@@ -5,7 +5,12 @@
 # Home page
 GET     /                           controllers.Application.index()
 # add 
-GET     /add/                       controllers.Application.create()
+GET     /add                        controllers.Application.create()
 POST    /                           controllers.Application.save()
 
+# Edit existing computer
+GET     /change/:id                 controllers.Application.edit(id:Long)
+POST    /change/:id                 controllers.Application.update(id:Long)
 
+# delete class
+POST    /change/:id/delete          controllers.Application.delete(id:Long)

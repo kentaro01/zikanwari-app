@@ -1,4 +1,4 @@
-@(message: String, size: Integer, sampleform: List[models.SampleData])
+@(message: String, size: Integer, list: List[models.SampleData])
 
 @main("Welcome to Play") {
 <table>
@@ -14,7 +14,16 @@
 </tr>
 <tr>
 <th  width="800">1時間目</th>
-<td  width="800"><br>@if(true){<a href="@controllers.Application.create()" >授業と先生</a>}</td>
+<td  width="800">
+  <a href="@routes.Application.create()">
+          授業   先生
+  </a><br>
+  @for(data <- list){
+      @data.lesson
+      @data.teacher
+    }
+    @for(data <- list){<a href="@routes.Application.edit(data.id)">@data.lesson</a>}
+</td>
 <td  width="800"></td>
 <td  width="800"></td>
 <td  width="800"></td>
@@ -60,5 +69,7 @@
 </tbody>
 </table>
 } 
+ 
+
  
 

@@ -10,6 +10,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.createForm;
 import views.html.index;
+import views.html.editForm;
 
 public class Application extends Controller {
 
@@ -30,6 +31,28 @@ public class Application extends Controller {
 		}
 		dataform.get().save();
 		flash("success");
+		return home;
+	}
+
+	public static Result edit(Long id) {
+		Form<SampleData> dataForm = form(SampleData.class).fill(
+				SampleData.find.byId(id));
+		return ok(editForm.render(id, dataForm));
+	}
+
+	public static Result update(Long id) {
+		Form<SampleData> dataForm = form(SampleData.class).bindFromRequest();
+		if (dataForm.hasErrors()) {
+			return badRequest(editForm.render(id, dataForm));
+		}
+		dataForm.get().update(id);
+		flash("success");
+		return home;
+	}
+
+	public static Result delete(Long id) {
+		SampleData.find.ref(id).delete();
+		flash("complete delete");
 		return home;
 	}
 
