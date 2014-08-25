@@ -3,14 +3,15 @@ package controllers;
 import static play.data.Form.form;
 
 import java.util.List;
+import java.util.Map;
 
 import models.SampleData;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.createForm;
-import views.html.index;
 import views.html.editForm;
+import views.html.index;
 
 public class Application extends Controller {
 
@@ -29,7 +30,11 @@ public class Application extends Controller {
 		if (dataform.hasErrors()) {
 			return badRequest(createForm.render("時間割", dataform));
 		}
-		dataform.get().save();
+		Map<String, String> map = dataform.data();
+		SampleData data = dataform.get();
+		data.lesson = map.get("lesson");
+		data.teacher = map.get("teacher");
+		data.save();
 		flash("success");
 		return home;
 	}

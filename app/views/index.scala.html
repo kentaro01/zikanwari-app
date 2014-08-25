@@ -1,6 +1,7 @@
 @(message: String, size: Integer, list: List[models.SampleData])
 
 @main("Welcome to Play") {
+<h1>@message </h1>
 <table>
         <tbody>
 <tr>
@@ -19,12 +20,18 @@
           授業   先生
   </a><br>
   @for(data <- list){
-      @data.lesson
+      <a href="@routes.Application.edit(data.id)">@data.lesson</a>
       @data.teacher
     }
-    @for(data <- list){<a href="@routes.Application.edit(data.id)">@data.lesson</a>}
 </td>
-<td  width="800"></td>
+<td  width="800"><a href="@routes.Application.create()">
+          授業   先生
+  </a><br>
+  @for(data <- list){
+      <a href="@routes.Application.edit(data.id)">@data.lesson</a>
+      @data.teacher
+    }
+ </td>
 <td  width="800"></td>
 <td  width="800"></td>
 <td  width="800"></td>
